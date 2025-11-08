@@ -1,17 +1,17 @@
 <%--
   Created by IntelliJ IDEA.
   User: truon
-  Date: 11/6/2025
-  Time: 8:24 PM
+  Date: 11/8/2025
+  Time: 7:50 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Home</title>
+    <title>Show PathVariable</title>
 </head>
 <body>
-<h1>Hello ${name}</h1>
-<h1>NameParam: ${nameParam}</h1>
+<h1>ID: ${id}</h1>
+<h1>UserID: ${userId}</h1>
 </body>
 </html>
