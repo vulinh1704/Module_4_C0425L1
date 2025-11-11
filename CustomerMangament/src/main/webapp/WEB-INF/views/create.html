@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create</title>
+</head>
+<body>
+<h2>Form Create</h2>
+<div th:replace="/partials/nav-bar :: navbar"></div>
+<form action="/students/create" method="POST" th:object="${student}">
+    <input type="text" name="name" placeholder="Name">
+    <input type="text" name="age" placeholder="Age">
+    <button>Submit</button>
+</form>
+</body>
+</html>

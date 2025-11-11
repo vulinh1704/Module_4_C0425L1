@@ -16,5 +16,6 @@
 <c:forEach var="item" items="${students}">
     <h3>Name: ${item.name} - Age: ${item.age}</h3>
 </c:forEach>
+<%-- View engine: JSTL (JSP) => ThymeLeaf (HTML) --%>
 </body>
 </html>

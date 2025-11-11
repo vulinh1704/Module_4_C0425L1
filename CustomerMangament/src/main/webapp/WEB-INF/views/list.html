@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<h2>Home</h2>
+<div th:replace="/partials/nav-bar :: navbar"></div>
+<div th:if="${message}" id="notify">
+    <p style="color: green" th:text="${message}"></p>
+</div>
+<table border="1">
+    <tr>
+        <td>Name</td>
+        <td>Age</td>
+    </tr>
+    <tr th:each="item: ${students}">
+        <td th:text="${item.name}"></td>
+        <td th:text="${item.age}"></td>
+    </tr>
+</table>
+<script>
+    setTimeout(() => {
+        document.getElementById("notify").innerHTML = '';
+    }, 2000)
+</script>
+
+<!--
+Quản Lý Sản Phẩm: CRUD sử dụng Spring MVC với View sử dung Thymeleaf;
+Thêm các tính năng tìm kiếm theo : Tên gần đúng và khoảng giá.
+Hoàn thành thực hành và bài tập: https://james.codegym.vn/course/view.php?id=540#section-3
+-->
+</body>
+</html>
