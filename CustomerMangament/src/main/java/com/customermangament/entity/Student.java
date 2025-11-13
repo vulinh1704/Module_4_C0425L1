@@ -3,6 +3,13 @@ package com.customermangament.entity;
 public class Student {
     private String name;
     private int age;
+    private String imagePath;
+
+    public Student(String name, int age, String imagePath) {
+        this.name = name;
+        this.age = age;
+        this.imagePath = imagePath;
+    }
 
     public Student(String name, int age) {
         this.name = name;
@@ -26,5 +33,13 @@ public class Student {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }

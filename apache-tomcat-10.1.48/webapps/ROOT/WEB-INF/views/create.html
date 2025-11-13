@@ -7,10 +7,23 @@
 <body>
 <h2>Form Create</h2>
 <div th:replace="/partials/nav-bar :: navbar"></div>
-<form action="/students/create" method="POST" th:object="${student}">
+<form action="/students/create" method="POST" th:object="${student}" enctype="multipart/form-data">
     <input type="text" name="name" placeholder="Name">
     <input type="text" name="age" placeholder="Age">
+    <input type="file" name="image">
     <button>Submit</button>
 </form>
 </body>
 </html>
+
+<!--
+ORM: Object Relational Mapping
+JPA
+Spring Repository
+-->
+
+<!--
+Database - Path hoặc URL => trỏ đến nơi lưu trữ ảnh
+Dịch vụ về Cloud (GG,AWS - https//:aws.com/image.jpg,Azure Microsoft,...) - API or SDK (Thư viện hoặc hàm có sẵn để tương tác) nào đó
+or Server (nhiều file thì sẽ có thể đầy => mua thêm bộ nhớ,..)
+-->

@@ -14,10 +14,12 @@
     <tr>
         <td>Name</td>
         <td>Age</td>
+        <td>Image</td>
     </tr>
     <tr th:each="item: ${students}">
         <td th:text="${item.name}"></td>
         <td th:text="${item.age}"></td>
+        <td><img th:src="@{${item.imagePath}}" src="" alt=""></td>
     </tr>
 </table>
 <script>
