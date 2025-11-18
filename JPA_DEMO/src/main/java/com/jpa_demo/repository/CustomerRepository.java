@@ -5,12 +5,14 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.Repository;
+//import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Transactional
-@Repository
+//@Repository
 public class CustomerRepository implements ICustomerRepository { // Viết các function để tương tác với db
     @PersistenceContext
     private EntityManager entityManager;
@@ -20,6 +22,7 @@ public class CustomerRepository implements ICustomerRepository { // Viết các 
         TypedQuery<Customer> query = entityManager.createQuery("select c from Customer c", Customer.class); // HQL
         return query.getResultList();
     }
+    // findAll()
 
     @Override
     public Customer findById(Long id) {
@@ -27,6 +30,7 @@ public class CustomerRepository implements ICustomerRepository { // Viết các 
         query.setParameter("id", id);
         return query.getSingleResult();
     }
+    // findById(Long id);
 
     @Override
     public void save(Customer customer) {
