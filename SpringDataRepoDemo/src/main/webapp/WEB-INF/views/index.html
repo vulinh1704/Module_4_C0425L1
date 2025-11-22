@@ -30,6 +30,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Address</th>
+            <th>Type</th>
             <th>Edit</th>
             <th>Delete</th>
             <th>View</th>
@@ -40,6 +41,7 @@
             <td th:text="${row.name}"></td>
             <td th:text="${row.email}"></td>
             <td th:text="${row.address}"></td>
+            <td th:text="${row.type.description}"></td>
             <td>
                 <a th:href="@{/customers/{id}/edit(id=${row.id})}" class="btn btn-warning btn-sm">
                     Edit

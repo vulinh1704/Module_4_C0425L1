@@ -2,6 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="/layout :: head">
     <title>CreateCustomer</title>
+    <style>
+        span {
+            color: red;
+        }
+    </style>
 </head>
 <body>
 <h3>Add Customer</h3>
@@ -17,14 +22,26 @@
         <div>
             <label for="name">Name</label>
             <input type="text" id="name" th:field="*{name}"/>
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
         </div>
         <div>
             <label for="email">Email</label>
             <input type="email" id="email" th:field="*{email}"/>
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
         </div>
         <div>
             <label for="address">Address</label>
             <input type="text" id="address" th:field="*{address}"/>
+            <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
+        </div>
+        <div>
+            <label for="type">Type</label>
+            <select name="Type" id="type" th:field="*{type.id}">
+                <option th:each="item : ${types}"
+                        th:value="${item.id}"
+                        th:text="${item.description}">
+                </option>
+            </select>
         </div>
         <input type="submit" value="Save"/>
     </form>

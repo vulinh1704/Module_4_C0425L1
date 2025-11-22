@@ -1,10 +1,14 @@
 package com.springdatarepodemo.controller;
 
 import com.springdatarepodemo.entity.Customer;
+import com.springdatarepodemo.entity.Type;
 import com.springdatarepodemo.service.ICustomerService;
+import com.springdatarepodemo.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -16,6 +20,9 @@ import java.util.List;
 public class CustomerController {
     @Autowired
     private ICustomerService customerService;
+
+    @Autowired
+    private TypeService typeService;
 
     @GetMapping("")
     public ModelAndView index(@RequestParam(name = "search", required = false) String search) {
@@ -30,11 +37,16 @@ public class CustomerController {
     public ModelAndView create() {
         ModelAndView modelAndView = new ModelAndView("create");
         modelAndView.addObject("customer", new Customer());
+        List<Type> types = this.typeService.findAll();
+        modelAndView.addObject("types", types);
         return modelAndView;
     }
 
     @PostMapping("/save")
-    public String save(Customer customer) {
+    public String save(@Validated Customer customer, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "create";
+        }
         customerService.save(customer);
         return "redirect:/customers";
     }

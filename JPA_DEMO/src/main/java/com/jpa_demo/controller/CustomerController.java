@@ -4,6 +4,8 @@ import com.jpa_demo.entity.Customer;
 import com.jpa_demo.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,13 +37,16 @@ public class CustomerController {
     }
 
     @PostMapping("/save")
-    public String save(Customer customer) {
+    public String save(@Validated Customer customer, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "create";
+        }
         customerService.save(customer);
         return "redirect:/customers";
     }
 
     @GetMapping("/{id}/edit")
-    public ModelAndView update(@PathVariable(name="id") Long id) {
+    public ModelAndView update(@PathVariable(name = "id") Long id) {
         ModelAndView modelAndView = new ModelAndView("update");
         modelAndView.addObject("customer", customerService.findById(id));
         return modelAndView;
@@ -54,7 +59,7 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}/delete")
-    public ModelAndView delete(@PathVariable(name="id") Long id) {
+    public ModelAndView delete(@PathVariable(name = "id") Long id) {
         ModelAndView modelAndView = new ModelAndView("delete");
         modelAndView.addObject("customer", customerService.findById(id));
         return modelAndView;
@@ -68,7 +73,7 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}/view")
-    public ModelAndView view(@PathVariable(name="id") Long id) {
+    public ModelAndView view(@PathVariable(name = "id") Long id) {
         ModelAndView modelAndView = new ModelAndView("view");
         modelAndView.addObject("customer", customerService.findById(id));
         return modelAndView;

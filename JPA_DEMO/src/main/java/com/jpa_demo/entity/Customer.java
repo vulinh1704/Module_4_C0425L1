@@ -1,6 +1,9 @@
 package com.jpa_demo.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Customer {
@@ -8,8 +11,13 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty(message = "Tên không được để trống")
+    @Size(min = 1, max = 20, message = "Tên phải có 1 - 20 ký tự")
     private String name;
+
+    @Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "Email không đúng định dạng, VD: example@gmail.com")
     private String email;
+    @NotEmpty(message = "Địa chỉ không được để trống")
     private String address;
 
     public Customer() {
@@ -54,3 +62,8 @@ public class Customer {
         this.address = address;
     }
 }
+
+/*
+ Regex hay được là mẫu chuỗi: "abc", "cde" là cách tạo khuôn mẫu của chuỗi và khi dữ liệu vào
+ mà có regex thì sẽ phải tuân mẫu đó.
+*/

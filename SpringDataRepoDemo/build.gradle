@@ -31,6 +31,8 @@ dependencies {
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.30' // cung cấp kết nối db (MYSQL)
     implementation("org.springframework.data:spring-data-jpa:3.4.2") // Cung cấp API (Interface) tương tác db
 
+    implementation group: 'jakarta.validation', name: 'jakarta.validation-api', version: '3.0.2'
+    implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: '7.0.5.Final'
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
